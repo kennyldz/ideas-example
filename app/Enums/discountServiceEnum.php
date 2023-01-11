@@ -1,0 +1,11 @@
+<?php
+
+namespace App\Enums;
+
+enum discountServiceEnum:string{
+
+    CASE PERCENT_OVER_DISCOUNT = "PERCENT_OVER_DISCOUNT";
+    CASE BUY_COUNT_GET_FREE = "BUY_COUNT_GET_FREE";
+    CASE BUY_COUNT_GET_DISCOUNT = "BUY_COUNT_GET_DISCOUNT";
+
+}

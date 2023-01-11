@@ -1,0 +1,455 @@
+openapi: 3.0.3
+info:
+  title: Laravel
+  description: ''
+  version: 1.0.0
+servers:
+  -
+    url: 'http://ideas-example.test'
+paths:
+  /api/v1/auth/login:
+    post:
+      summary: 'Customer Login'
+      operationId: customerLogin
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses: {  }
+      tags:
+        - Endpoints
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                  description: 'Must be a valid email address. Must not be greater than 250 characters.'
+                  example: gayle14@example.com
+                password:
+                  type: string
+                  description: 'Must be at least 8 characters.'
+                  example: '/u(LMb#:'
+              required:
+                - email
+                - password
+      security: []
+  /api/v1/auth/register:
+    post:
+      summary: 'Customer Register'
+      operationId: customerRegister
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses: {  }
+      tags:
+        - Endpoints
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  description: 'Must be at least 1 character. Must not be greater than 250 characters.'
+                  example: qnommgvdappuv
+                email:
+                  type: string
+                  description: 'Must be a valid email address. Must not be greater than 250 characters.'
+                  example: mertz.nova@example.org
+                password:
+                  type: string
+                  description: 'Must be at least 8 characters.'
+                  example: ^CyyKQq~
+                since:
+                  type: string
+                  description: 'Must be a valid date.'
+                  example: '2023-01-10T22:11:19'
+                revenue:
+                  type: number
+                  description: ''
+                  example: 35.429937
+              required:
+                - name
+                - email
+                - password
+      security: []
+  /api/v1/product/list:
+    get:
+      summary: 'Product List'
+      operationId: productList
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  success: true
+                  data:
+                    message: 'products List'
+                    products:
+                      -
+                        id: 1
+                        name: kalem
+                        category: 1
+                        price: '10.00'
+                        stock: 3
+                      -
+                        id: 2
+                        name: masa
+                        category: 1
+                        price: '5.00'
+                        stock: 1
+                  message: productsResponse
+                properties:
+                  success:
+                    type: boolean
+                    example: true
+                  data:
+                    type: object
+                    properties:
+                      message:
+                        type: string
+                        example: 'products List'
+                      products:
+                        type: array
+                        example:
+                          -
+                            id: 1
+                            name: kalem
+                            category: 1
+                            price: '10.00'
+                            stock: 3
+                          -
+                            id: 2
+                            name: masa
+                            category: 1
+                            price: '5.00'
+                            stock: 1
+                        items:
+                          type: object
+                          properties:
+                            id:
+                              type: integer
+                              example: 1
+                            name:
+                              type: string
+                              example: kalem
+                            category:
+                              type: integer
+                              example: 1
+                            price:
+                              type: string
+                              example: '10.00'
+                            stock:
+                              type: integer
+                              example: 3
+                  message:
+                    type: string
+                    example: productsResponse
+      tags:
+        - Endpoints
+      security: []
+  /api/v1/baskets/create:
+    post:
+      summary: 'Add Basket'
+      operationId: addBasket
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses: {  }
+      tags:
+        - Endpoints
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                product_id:
+                  type: string
+                  description: ''
+                  example: voluptatem
+                quantity:
+                  type: integer
+                  description: ''
+                  example: 17
+              required:
+                - product_id
+                - quantity
+      security: []
+  /api/v1/baskets/remove:
+    post:
+      summary: 'Remove Basket'
+      operationId: removeBasket
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses: {  }
+      tags:
+        - Endpoints
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                basket_id:
+                  type: integer
+                  description: ''
+                  example: 1
+              required:
+                - basket_id
+      security: []
+  /api/v1/baskets/list:
+    get:
+      summary: 'List Basket'
+      operationId: listBasket
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        401:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  success: false
+                  error_message: 'Unauthorized access'
+                properties:
+                  success:
+                    type: boolean
+                    example: false
+                  error_message:
+                    type: string
+                    example: 'Unauthorized access'
+      tags:
+        - Endpoints
+      security: []
+  /api/v1/order/preCreate:
+    post:
+      summary: 'Order Pre Create'
+      operationId: orderPreCreate
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses: {  }
+      tags:
+        - Endpoints
+      security: []
+  /api/v1/order/create:
+    post:
+      summary: 'Order Create'
+      operationId: orderCreate
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses: {  }
+      tags:
+        - Endpoints
+      security: []
+  /api/v1/order/list:
+    get:
+      summary: 'Order My Order'
+      operationId: orderMyOrder
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        401:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  success: false
+                  error_message: 'Unauthorized access'
+                properties:
+                  success:
+                    type: boolean
+                    example: false
+                  error_message:
+                    type: string
+                    example: 'Unauthorized access'
+      tags:
+        - Endpoints
+      security: []
+  /api/v1:
+    get:
+      summary: ''
+      operationId: getApiV1
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  version: v1.0
+                  status: active
+                  message: 'To create an order, please add products to your cart.'
+                properties:
+                  version:
+                    type: string
+                    example: v1.0
+                  status:
+                    type: string
+                    example: active
+                  message:
+                    type: string
+                    example: 'To create an order, please add products to your cart.'
+      tags:
+        - Endpoints
+      security: []
+tags:
+  -
+    name: Endpoints
+    description: ''
