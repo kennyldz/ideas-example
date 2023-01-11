@@ -104,7 +104,7 @@ class stockService extends BaseController{
                 $this->product->where('id', $product->productId)->decrement('stock', $product->quantity);
             }
         }catch (QueryException $exception){
-            Log::critical('stock reduction could not be achieved after ordering.'.print_r($exception));
+            Log::critical('stock reduction could not be achieved after ordering.'.$exception->getMessage());
         }
     }
 

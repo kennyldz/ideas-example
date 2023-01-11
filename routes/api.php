@@ -29,7 +29,7 @@ Route::prefix("v1")->group(function (){
     Route::get('/',function (){
         return response()->json([
             "version"   => "v1.0",
-            "status"    => "active",
+            "status"    => true,
             "message"   => "To create an order, please add products to your cart."
         ]);
     });
